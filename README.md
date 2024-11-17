@@ -38,6 +38,7 @@ The Contact Management Service (CMS) is a full-stack web application designed to
    ```bash
    npm run dev
    ```
+   The frontend will run on `http://localhost:5174/`.
 
 ### Backend Setup
 
