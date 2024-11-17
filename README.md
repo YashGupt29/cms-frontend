@@ -46,7 +46,6 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 
    ```bash
    git clone https://github.com/YashGupt29/cms-backend.git
-   cd cms-frontend
    ```
 
 2. Navigate to the backend folder (assuming it is in a separate directory):
