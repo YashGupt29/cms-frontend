@@ -24,7 +24,7 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 1. Clone the repository:
 
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/YashGupt29/cms-frontend.git
    cd cms-frontend
    ```
 
@@ -42,28 +42,37 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 
 ### Backend Setup
 
-1. Navigate to the backend folder (assuming it is in a separate directory):
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/YashGupt29/cms-backend.git
+   cd cms-frontend
+   ```
+
+2. Navigate to the backend folder (assuming it is in a separate directory):
 
    ```bash
    cd cms-backend
    ```
 
-2. Install dependencies:
+3. Install dependencies:
 
    ```bash
    npm install
    ```
 
-3. Set up your MongoDB URI in a `.env` file:
+4. Set up your MongoDB URI in a `.env` file:
 
    ```bash
    MONGODB_URI=<your-mongodb-uri>
    ```
 
-4. Start the backend server:
+5. Start the backend server:
 
    ```bash
    node server.js
+   or
+   nodemon
    ```
 
    The backend will run on `http://localhost:5000`.
