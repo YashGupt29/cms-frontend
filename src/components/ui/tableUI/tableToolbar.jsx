@@ -17,9 +17,9 @@ import { defaultValues } from "../../../constants/constants";
 import { useDeleteContact } from "../../../React-Query-hooks/useDeleteContact";
 export function EnhancedTableToolbar(props) {
   // eslint-disable-next-line react/prop-types
-  const { numSelected, onSetForm, openForm, contactId } = props;
+  const { numSelected, onSetForm, openForm, contactId, onSelected } = props;
   const { mutate, isPending: isLoadingAddForm } = usePostForm(onSetForm);
-  const { mutate: deleteContactMutate } = useDeleteContact();
+  const { mutate: deleteContactMutate } = useDeleteContact(onSelected);
   const handleClickOutsideForm = (event) => {
     if (event.target === event.currentTarget) {
       onSetForm(false);

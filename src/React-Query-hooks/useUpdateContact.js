@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiUpdateContact } from "../services/api";
+import { toast } from "react-toastify";
 
 export const useUpdateContact = (onEditForm) => {
   const queryClient = useQueryClient();
@@ -14,6 +15,7 @@ export const useUpdateContact = (onEditForm) => {
     onSuccess: (data) => {
       console.log("Contact updated successfully:", data);
       queryClient.invalidateQueries({ queryKey: ["contacts"] });
+      toast.success("Contact updated successfully");
       onEditForm(false);
     },
     onError: (error) => {
@@ -21,6 +23,7 @@ export const useUpdateContact = (onEditForm) => {
         "Error updating contact:",
         error.response?.data?.message || error.message
       );
+      toast.error("Failed to update contact");
       onEditForm(false);
     },
   });

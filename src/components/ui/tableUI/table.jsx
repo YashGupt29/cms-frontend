@@ -51,9 +51,11 @@ export default function EnhancedTable({
     if (event.target.checked) {
       const newSelected = sampleContacts?.map((n) => n._id);
       setSelected(newSelected);
+      setContactId(newSelected);
       return;
     }
     setSelected([]);
+    setContactId([]);
   };
 
   const handleClick = (event, id) => {
@@ -179,6 +181,7 @@ export default function EnhancedTable({
             onSetForm={onSetForm}
             openForm={openForm}
             contactId={contactId}
+            onSelected={setSelected}
           />
           <TableContainer>
             <Table
