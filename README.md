@@ -25,7 +25,7 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 
    ```bash
    git clone <repo-url>
-   cd cms
+   cd cms-frontend
    ```
 
 2. Install dependencies:
@@ -45,7 +45,7 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 1. Navigate to the backend folder (assuming it is in a separate directory):
 
    ```bash
-   cd backend
+   cd cms-backend
    ```
 
 2. Install dependencies:
@@ -63,7 +63,7 @@ The Contact Management Service (CMS) is a full-stack web application designed to
 4. Start the backend server:
 
    ```bash
-   npm start
+   node server.js
    ```
 
    The backend will run on `http://localhost:5000`.
