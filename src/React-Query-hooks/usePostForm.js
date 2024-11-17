@@ -13,7 +13,9 @@ export function usePostForm(onSetForm) {
     },
     onError: (error) => {
       console.error("Error posting data:", error.message);
-      toast.error("Failed to add contact");
+      toast.error(
+        "Failed to add contact maybe because of internal error or duplicate email entries"
+      );
       onSetForm(false);
     },
   });

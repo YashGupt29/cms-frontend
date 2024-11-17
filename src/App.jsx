@@ -1,23 +1,33 @@
 import { useEffect, useState } from "react";
 import EnhancedTable from "./components/ui/tableUI/table";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [openForm, setOpenForm] = useState(false);
   const [editForm, setEditForm] = useState(false);
+  useEffect(() => {
+    toast.info("Use CTRL + A for adding contact to form");
+  }, []);
 
   useEffect(() => {
-    const handleEscapeKey = (event) => {
+    const handleKeyDown = (event) => {
+      if (event.ctrlKey && event.key === "a") {
+        event.preventDefault();
+        setOpenForm(true);
+        toast.info("Opening Add Form");
+      }
+
       if (event.key === "Escape") {
         setOpenForm(false);
         setEditForm(false);
       }
     };
 
-    window.addEventListener("keydown", handleEscapeKey);
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
