@@ -18,7 +18,7 @@ import { useDeleteContact } from "../../../React-Query-hooks/useDeleteContact";
 export function EnhancedTableToolbar(props) {
   // eslint-disable-next-line react/prop-types
   const { numSelected, onSetForm, openForm, contactId } = props;
-  const { mutate, isLoading } = usePostForm();
+  const { mutate, isPending: isLoadingAddForm } = usePostForm(onSetForm);
   const { mutate: deleteContactMutate } = useDeleteContact();
   const handleClickOutsideForm = (event) => {
     if (event.target === event.currentTarget) {
@@ -33,8 +33,6 @@ export function EnhancedTableToolbar(props) {
     } catch (err) {
       console.error("Failed to submit form:", err.message);
     }
-    console.log(isLoading);
-    // onSetForm(!openForm);
   };
   const handleContactDelete = () => {
     console.log(contactId);
@@ -59,7 +57,7 @@ export function EnhancedTableToolbar(props) {
           <ContactForm
             initialValues={defaultValues}
             onSubmit={handleAddSubmit}
-            isLoading={isLoading}
+            isLoading={isLoadingAddForm}
           />
         </Backdrop>
       )}

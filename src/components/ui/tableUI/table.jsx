@@ -39,8 +39,8 @@ export default function EnhancedTable({
   const [selectedRow, setSelectedRow] = React.useState(null);
   const [editId, setEditId] = React.useState(null);
   const { data: sampleContacts, isLoading } = useGetContacts();
-  const { mutate: updateContact, isLoading: isLodaingUpdateContact } =
-    useUpdateContact();
+  const { mutate: updateContact, isPending: isLodaingUpdateContact } =
+    useUpdateContact(onEditForm);
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -138,11 +138,6 @@ export default function EnhancedTable({
   };
   const handleAddSubmit = (formData) => {
     updateContact({ id: editId, updatedContactData: formData });
-    if (isLodaingUpdateContact) {
-      alert("loading");
-    }
-
-    onEditForm(false);
   };
 
   return (
@@ -165,6 +160,7 @@ export default function EnhancedTable({
             }
             onSubmit={handleAddSubmit}
             editForm={editForm}
+            isLoading={isLodaingUpdateContact}
           />
         </Backdrop>
       )}

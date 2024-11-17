@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiUpdateContact } from "../services/api";
 
-export const useUpdateContact = () => {
+export const useUpdateContact = (onEditForm) => {
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading, isError, error, isSuccess } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ id, updatedContactData }) => {
       if (!id || !updatedContactData) {
         throw new Error("Missing ID or updated contact data");
@@ -14,14 +14,16 @@ export const useUpdateContact = () => {
     onSuccess: (data) => {
       console.log("Contact updated successfully:", data);
       queryClient.invalidateQueries({ queryKey: ["contacts"] });
+      onEditForm(false);
     },
     onError: (error) => {
       console.error(
         "Error updating contact:",
         error.response?.data?.message || error.message
       );
+      onEditForm(false);
     },
   });
 
-  return { mutate, isLoading, isError, error, isSuccess };
+  return { mutate, isPending };
 };
